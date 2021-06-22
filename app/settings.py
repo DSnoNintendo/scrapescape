@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-t9ig@7wohtbjs(ia1kkqleo7122=fyg1wh3p6vs&#c#zn!sw^h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','https://scrapescape.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'scrapescape.herokuapp.com',
+                 '.scrapescape.com']
 
 
 # Application definition
