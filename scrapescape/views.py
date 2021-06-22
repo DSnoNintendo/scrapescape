@@ -4,17 +4,19 @@ from . import scraper
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import path
+from django.middleware.csrf import get_token
 import mimetypes
 
 def home(request):
     return render(request, 'scrapescape/home.html')
 
 def run(request):
-    scraper.run(request.POST['search_term'])
-    path = 'file.zip'
+    token = get_token(request)
+    scraper.run(request.POST['search_term'], token)
+    path = '%s.zip' % token
     zip_file = open(path, 'rb')
     response = HttpResponse(zip_file, content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename="%s"' % 'images.zip'
+    response['Content-Disposition'] = 'attachment; filename="%s"' % '%s.zip' % token
 
     return response
     #download(requem  iist)

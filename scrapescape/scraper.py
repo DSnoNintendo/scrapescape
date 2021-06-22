@@ -98,10 +98,9 @@ def download_imgs(urls):
 
 
 
-def run(SEARCH_TERM):
+def run(SEARCH_TERM, token):
     urls = []
     img_counter = 0
-    #SEARCH_TERM = "head and shoulders pattern"
     BROWSER_OPTIONS = Options()
     BROWSER_OPTIONS.headless = True
     BROWSER_OPTIONS.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -112,6 +111,8 @@ def run(SEARCH_TERM):
 
     driver.get("http://www.google.com/images?q=" + SEARCH_TERM.replace(' ', '+'))
 
+    os.mkdir(token)
+
     while end_reached(driver) == False:
         scroll_to_bottom(driver)
         show_more_results(driver)
@@ -119,18 +120,17 @@ def run(SEARCH_TERM):
         end_reached(driver)
 
     for i in range(200):
-
         try:
             img_url = get_img_url(i, driver)
             if str(img_url) != "None":
                 if "png" in img_url:
-                    urllib.request.urlretrieve(img_url, "pictures/img%s.png" % img_counter)
+                    urllib.request.urlretrieve(img_url, "%s/img%s.png" % (token, img_counter))
                 elif "jpeg" in img_url:
-                    urllib.request.urlretrieve(img_url, "pictures/img%s.jpeg" % img_counter)
+                    urllib.request.urlretrieve(img_url, "%s/img%s.jpeg" % (token, img_counter))
                 elif "gif" in img_url:
-                    urllib.request.urlretrieve(img_url, "pictures/img%s.gif" % img_counter)
+                    urllib.request.urlretrieve(img_url, "%s/img%s.gif" % (token, img_counter))
                 else:
-                    urllib.request.urlretrieve(img_url, "pictures/img%s.png" % img_counter)
+                    urllib.request.urlretrieve(img_url, "%s/img%s.png" % (token, img_counter))
 
                 img_counter += 1
             urls.append(img_url)
@@ -139,7 +139,7 @@ def run(SEARCH_TERM):
             print(e)
 
     #download_imgs(urls,driver)
-    shutil.make_archive("file", 'zip', "pictures")
+    shutil.make_archive(token, 'zip', token)
     sleep(1)
     driver.quit()
 
