@@ -99,6 +99,7 @@ def download_imgs(urls):
 
 
 def run(SEARCH_TERM, token):
+    os.mkdir(token)
     urls = []
     img_counter = 0
     BROWSER_OPTIONS = Options()
@@ -110,8 +111,6 @@ def run(SEARCH_TERM, token):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH") , options=BROWSER_OPTIONS)
 
     driver.get("http://www.google.com/images?q=" + SEARCH_TERM.replace(' ', '+'))
-
-    os.mkdir(token)
 
     while end_reached(driver) == False:
         scroll_to_bottom(driver)
