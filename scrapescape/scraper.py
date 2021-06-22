@@ -139,8 +139,9 @@ def run(SEARCH_TERM, token):
 
     #download_imgs(urls,driver)
     shutil.make_archive(token, 'zip', token)
-    sleep(1)
     driver.quit()
+
+    return img_counter
 
 
 

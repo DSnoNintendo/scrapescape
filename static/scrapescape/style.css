@@ -1,13 +1,26 @@
+
+
+body {
+
+    background-color:#87bcf5; !important;
+
+}
+
+.logo {
+    width:250px;
+    height:250px;
+}
 .container {
-    position: fixed;
+
+    /* bring your own prefixes base folder */
+    max-width: none;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
-    width:50%;
-    height:50%;
-    background-color:#87bcf5;
+    width:350px;
+    height:350px;
 
+    position: fixed;
     box-shadow:
        inset 0 -3em 3em rgba(0,0,0,0.1),
              0 0  0 2px #5391d4,
@@ -24,22 +37,68 @@
 }
 span {
     display: inline-block;
-    /* float:left;  remove */
+    float:left;
     margin: 10px 10px 0 0;
-    padding: 40px 10px;
+
     font-family: 'Ubuntu', sans-serif;
-    font-size:40px
+    font-size:12px;
+    padding:2px;
+    background-color:grey;
+    border-radius: 2px;
+    color:#d1d1d1;
+    border-color: #d1d1d1
+}
+
+.inputcontainer {
+    position: relative;
+    width:300px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 input{
-  width: 50%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical;
-  display: inline-block;
-    /* float:left;  remove */
-    margin: 10px 10px 0 0;
-    font-family: 'Ubuntu', sans-serif;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 8px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #DDDDDD;
+    width:100%;
+    box-sizing:border-box;
+    display:block;
+    border-radius:7px;
+}
+
+input:focus {
+    box-shadow: 0 0 5px #2d13d6;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #2d13d6;
+}
+
+.searchimg {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    color:grey
+
+}
+
+div.wrapper {
+            display: table;
+            width: 100%;
+        }
+
+form {
+     display: table-cell;
+     text-align: center;
+     vertical-align: middle;
+}
+
+
+.progress {
+    float:left;
+    width
 }

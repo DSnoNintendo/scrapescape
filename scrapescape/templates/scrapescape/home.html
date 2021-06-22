@@ -5,19 +5,34 @@
     <title>ScrapeScape</title>
 
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'scrapescape/style.css' %}">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'scrapescape/style.css' %}">
+
 </head>
 <body>
-    <div class="container">
-        <div class="child">
-                <form action="run" method="post">
-                    {% csrf_token %}
-                    <input type="text", placeholder="Enter a search term" name="search_term">
-                    <input type="submit" value="Get Images">
-                </form>
+        <div class="stats">
+            <span>Photos Scraped:</span><br>
         </div>
-    </div>
+
+        <div class="logo">
+            <img>
+        </div>
+
+        <div class="wrapper">
+
+            <form action="run" method="post">
+                {% csrf_token %}
+                <div class="inputcontainer">
+                    <input type="text", placeholder="Enter a search term" name="search_term"> <br>
+                    <img class="searchimg" src="https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png"  />
+                </div>
+
+            </form>
+        </div>
+
+
 </body>
 </html>
