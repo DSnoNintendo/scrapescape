@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScrapeScape</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'scrapescape/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="child">
+                <form action="run" method="post">
+                    {% csrf_token %}
+                    <input type="text", placeholder="Enter a search term" name="search_term">
+                    <input type="submit" value="Get Images">
+                </form>
+        </div>
+    </div>
+</body>
+</html>

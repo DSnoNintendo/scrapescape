@@ -1,0 +1,45 @@
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    width:50%;
+    height:50%;
+    background-color:#87bcf5;
+
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px #5391d4,
+             0.3em 0.3em 1em #bcc8d4;
+
+    border-radius: 22px;
+
+    text-align:center;
+
+}
+
+.child {
+    margin: 0 auto;
+}
+span {
+    display: inline-block;
+    /* float:left;  remove */
+    margin: 10px 10px 0 0;
+    padding: 40px 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size:40px
+}
+
+input{
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  display: inline-block;
+    /* float:left;  remove */
+    margin: 10px 10px 0 0;
+    font-family: 'Ubuntu', sans-serif;
+}
