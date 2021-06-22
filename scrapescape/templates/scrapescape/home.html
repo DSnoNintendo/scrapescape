@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ScrapeScape</title>
+    <title>Excav8r</title>
 
     {% load static %}
 
@@ -14,19 +14,21 @@
 </head>
 <body>
         <div class="stats">
-            <span>Photos Scraped:</span><br>
-        </div>
+            <span>Photos Scraped: {{ data.count }}</span><br><br><br><br><br>
 
-        <div class="logo">
-            <img>
         </div>
+            <div class="logocontainer">
+                {% load static %}
+                <img src="{% static 'scrapescape/logo.png' %}" class="logo">
+            </div><br>
+
 
         <div class="wrapper">
 
             <form action="run" method="post">
                 {% csrf_token %}
                 <div class="inputcontainer">
-                    <input type="text", placeholder="Enter a search term" name="search_term"> <br>
+                    <input type="text", placeholder="Enter a search term" name="search_term" autocomplete="off"> <br>
                     <img class="searchimg" src="https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png"  />
                 </div>
 

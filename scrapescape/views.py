@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.template.response import TemplateResponse
+
 from . import scraper
+import json
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -9,7 +12,17 @@ import mimetypes
 from scrapescape.models import Search
 
 def home(request):
-    return render(request, 'scrapescape/home.html')
+    data = {
+        "count" : 199
+    }
+
+    searchcounts = Search.objects.all()
+
+    for search in searchcounts:
+        data["count"] += search.output
+
+    #json_string = json.dumps(data)
+    return render(request, 'scrapescape/home.html', {'data' : data})
 
 def run(request):
     token = get_token(request)
@@ -21,8 +34,10 @@ def run(request):
     response = HttpResponse(zip_file, content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename="%s"' % '%s.zip' % token
 
-    Search.objects.create(keyword=search_term, output=size)
+    search = Search.create(keyword=search_term, output=size)
+    search.save()
     print("Model created\nSearch Term: %s\nSize: %s" % (search_term, size))
+
     return response
     #download(requem  iist)
 

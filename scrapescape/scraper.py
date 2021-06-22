@@ -108,6 +108,7 @@ def run(SEARCH_TERM, token):
     BROWSER_OPTIONS.add_argument("--disable-dev-shm-usage")
     BROWSER_OPTIONS.add_argument("--no-sandbox")
 
+    #driver = webdriver.Chrome(ChromeDriverManager().install(), options=BROWSER_OPTIONS)
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH") , options=BROWSER_OPTIONS)
 
     driver.get("http://www.google.com/images?q=" + SEARCH_TERM.replace(' ', '+'))
@@ -140,7 +141,6 @@ def run(SEARCH_TERM, token):
     #download_imgs(urls,driver)
     shutil.make_archive(token, 'zip', token)
     driver.quit()
-
     return img_counter
 
 
