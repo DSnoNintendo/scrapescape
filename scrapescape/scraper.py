@@ -105,8 +105,10 @@ def run(SEARCH_TERM):
     BROWSER_OPTIONS = Options()
     BROWSER_OPTIONS.headless = True
     BROWSER_OPTIONS.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    BROWSER_OPTIONS.add_argument("--disable-dev-shm-usage")
+    BROWSER_OPTIONS.add_argument("--no-sandbox")
 
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=BROWSER_OPTIONS)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH") , options=BROWSER_OPTIONS)
 
     driver.get("http://www.google.com/images?q=" + SEARCH_TERM.replace(' ', '+'))
 
