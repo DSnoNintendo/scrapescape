@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -102,6 +104,7 @@ def run(SEARCH_TERM):
     #SEARCH_TERM = "head and shoulders pattern"
     BROWSER_OPTIONS = Options()
     BROWSER_OPTIONS.headless = True
+    BROWSER_OPTIONS.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=BROWSER_OPTIONS)
 
